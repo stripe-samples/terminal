@@ -111,6 +111,14 @@ Stripe.api_key = ENV['STRIPE_SECRET_KEY']
 Stripe.max_network_retries = 2
 Stripe.api_version = "2020-08-27"
 
+def ensure_simulated_readers
+  # This checks to see if we have any simulated readers
+  # on the CI account, if we do not, then it creates a new one.
+  if !Stripe::Terminal::Reader.list(device_type: 'simulated_wisepos_e').any?
+    Stripe::Terminal::Reader.create(registration_code: 'simulated-wpe')
+  end
+end
+
 def server_url
   SERVER_URL
 end

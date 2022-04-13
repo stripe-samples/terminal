@@ -16,7 +16,7 @@ stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
 stripe.api_version = "2020-08-27"
 # For sample support and debugging, not required for production
 stripe.app_info = {
-    "name": "stripe-samples/terminal/api-driven",
+    "name": "stripe-samples/terminal/server-driven",
     "version": "0.0.1",
     "url": "https://github.com/stripe-samples"
 }
@@ -26,8 +26,6 @@ app = Flask(__name__,
             static_folder=static_dir,
             static_url_path="",
             template_folder=static_dir)
-
-print(static_dir)
 
 
 @app.route("/", methods=['GET'])
@@ -93,7 +91,7 @@ def retrieve_payment_intent():
 @app.route("/process-payment-intent", methods=['POST'])
 def process_payment_intent():
     """
-    Hands-off a PaymentIntent to a Terminal Reader. 
+    Hands-off a PaymentIntent to a Terminal Reader.
     This action requires a PaymentIntent ID and Reader ID.
 
     See the documentation [0] for additional optional
@@ -103,8 +101,9 @@ def process_payment_intent():
     """
     try:
         request_json = request.get_json()
-        payment_intent_id, reader_id = request_json.get(
-            'payment_intent_id'), request_json.get('reader_id')
+        payment_intent_id = request_json.get('payment_intent_id')
+        reader_id = request_json.get('reader_id')
+
         reader_state = stripe.terminal.Reader.process_payment_intent(
             reader_id,
             payment_intent=payment_intent_id,
@@ -118,13 +117,13 @@ def process_payment_intent():
 def simulate_terminal_payment():
     """
     Simulates a user tapping/dipping their credit card
-    on a simulated reader. 
+    on a simulated reader.
 
     This action requires a Reader ID and can be configured
-    to simulate different outcomes using a card_present dictionary. 
+    to simulate different outcomes using a card_present dictionary.
     See the documentation [0][1] for details.
 
-    [0] https://stripe.com/docs/api/terminal/readers/present_payment_method 
+    [0] https://stripe.com/docs/api/terminal/readers/present_payment_method
     [1] https://stripe.com/docs/terminal/payments/collect-payment?terminal-sdk-platform=server-driven#simulate-a-payment
     """
     try:
@@ -152,8 +151,8 @@ def retrieve_reader():
 @app.route("/capture-payment-intent", methods=['POST'])
 def capture_payment_intent():
     """
-    Captures a PaymentIntent that been completed but uncaptured. 
-    This action only requires a PaymentIntent ID but can be configured 
+    Captures a PaymentIntent that been completed but uncaptured.
+    This action only requires a PaymentIntent ID but can be configured
     with additional parameters.
 
     [0] https://stripe.com/docs/api/payment_intents/capture
@@ -169,10 +168,10 @@ def capture_payment_intent():
 @app.route("/cancel-reader-action", methods=['POST'])
 def cancel_action():
     """
-    Cancels the Reader action and resets the screen to the idle state. 
+    Cancels the Reader action and resets the screen to the idle state.
     This can also be use to reset the Reader's screen back to the idle state.
 
-    It only returns a failure if the Reader is currently processing a payment 
+    It only returns a failure if the Reader is currently processing a payment
     after a customer has dipped/tapped or swiped their card.
 
     Note: This doesn't cancel in-flight payments.
