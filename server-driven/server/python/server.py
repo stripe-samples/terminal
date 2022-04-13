@@ -179,7 +179,6 @@ def cancel_action():
     try:
         reader_id = request.get_json().get('reader_id')
         reader_state = stripe.terminal.Reader.cancel_action(reader_id)
-        print(reader_state)
         return jsonify({'reader_state': reader_state})
     except Exception as e:
         return jsonify({'error': {'message': str(e)}}), 400
