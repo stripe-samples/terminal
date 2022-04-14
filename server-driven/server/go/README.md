@@ -23,7 +23,7 @@ STRIPE_WEBHOOK_SECRET=whsec_...
 DOMAIN=http://localhost:4242
 
 # Path to front-end implementation. Note: PHP has it's own front end implementation.
-STATIC_DIR=../../client/html
+STATIC_DIR=../../client
 ```
 
 2. Install dependencies

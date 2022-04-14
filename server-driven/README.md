@@ -32,10 +32,12 @@ Pick a server:
 - [go](./server/go)
 - [php](./server/php)
 - [ruby](./server/ruby)
+- [java](./server/java)
+- [.NET](./server/dotnet)
 
 Pick a client:
 
-- [html](./client/html)
+- [html](./client)
 
 **Installing and cloning manually**
 
@@ -58,7 +60,7 @@ Example `.env` file:
 
 ```sh
 STRIPE_SECRET_KEY=<replace-with-your-secret-key>
-STATIC_DIR="../../client/html"
+STATIC_DIR="../../client"
 ```
 
 You will need a Stripe account in order to run the demo. Once you set up

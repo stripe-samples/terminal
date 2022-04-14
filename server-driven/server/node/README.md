@@ -18,8 +18,7 @@ Ensure the API keys are configured in `.env` in this directory. It should includ
 STRIPE_SECRET_KEY=sk_test...
 
 # Path to front-end implementation. Note: PHP has it's own front end implementation.
-STATIC_DIR=../../client/html
-DOMAIN=http://localhost:4242
+STATIC_DIR=../../client
 ```
 
 2. Install dependencies and start the server
