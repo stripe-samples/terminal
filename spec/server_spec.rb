@@ -60,7 +60,8 @@ RSpec.describe "Terminal integration" do
     expect(resp["reader_state"]["action"]["status"]).to eq("in_progress")
   end
 
-  it 'simulates payment' do
+  # Skipped because it runs in parallel in CI and conflicts with the simulated reader's states
+  xit 'simulates payment' do
     reader = Stripe::Terminal::Reader.list(limit: 1, device_type: 'simulated_wisepos_e').data.first
     payment_intent = Stripe::PaymentIntent.create(
       amount: 999,
