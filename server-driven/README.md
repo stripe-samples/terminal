@@ -12,13 +12,13 @@ Once your user and cashier are ready to complete their transaction, use the Stri
 The recommended approach is to install with the [Stripe CLI](https://stripe.com/docs/stripe-cli#install):
 
 ```sh
-stripe samples create stripe-terminal-demos
+stripe samples create terminal
 ```
 
 Then pick:
 
 ```sh
-api-driven
+server-driven
 ```
 
 This sample includes several different server implementations and several
@@ -28,6 +28,10 @@ the clients all work with the same server routes.
 Pick a server:
 
 - [python](./server/python)
+- [node](./server/node)
+- [go](./server/go)
+- [php](./server/php)
+- [ruby](./server/ruby)
 
 Pick a client:
 
@@ -38,8 +42,8 @@ Pick a client:
 If you do not want to use the Stripe CLI, you can manually clone and configure
 the sample yourself:
 
-```
-git clone https://github.com/stripe-samples/stripe-terminal-sample
+```bash
+git clone https://github.com/stripe-samples/terminal
 ```
 
 Rename and move the [`.env.example`](.env.example) file into a file named
@@ -47,15 +51,14 @@ Rename and move the [`.env.example`](.env.example) file into a file named
 example:
 
 ```
-cp .env.example prebuilt-checkout-page/server/node/.env
+cp .env.example server-driven/server/node/.env
 ```
 
 Example `.env` file:
 
 ```sh
 STRIPE_SECRET_KEY=<replace-with-your-secret-key>
-STATIC_DIR=../../client/html
-DOMAIN=http://localhost:4242
+STATIC_DIR="../../client/html"
 ```
 
 You will need a Stripe account in order to run the demo. Once you set up
@@ -67,9 +70,6 @@ The other environment variables are configurable:
 
 `STATIC_DIR` tells the server where the client files are located and does
 not need to be modified unless you move the server files.
-
-`DOMAIN` is the domain of your website, where Checkout will redirect back to
-after the customer completes the payment on the Checkout page.
 
 **2. Create a Location**
 Locations help you manage readers and their activity by associating them with a physical operating site.
@@ -150,7 +150,7 @@ folder README on how to run.
 
 For example, if you want to run the Node server:
 
-```
+```bash
 cd server/node
 # There's a README in this folder with instructions to run the server.
 npm install

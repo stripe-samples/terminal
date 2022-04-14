@@ -4,16 +4,18 @@ async function createPaymentIntent(amount) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ amount }),
+    body: JSON.stringify({
+      amount: amount
+    }),
   });
   const { payment_intent_id: paymentIntentId, error: paymentError } = await res.json();
-  return { paymentIntentId, paymentError }; 
+  return { paymentIntentId, paymentError };
 }
 
 async function retrievePaymentIntent(paymentIntentId) {
   const res = await fetch(`/retrieve-payment-intent?payment_intent_id=${paymentIntentId}`);
   const { payment_intent: paymentIntent, error: paymentError } = await res.json();
-  return { paymentIntent, paymentError }; 
+  return { paymentIntent, paymentError };
 }
 
 async function capturePaymentIntent(paymentIntentId) {
@@ -24,6 +26,6 @@ async function capturePaymentIntent(paymentIntentId) {
     },
     body: JSON.stringify({ payment_intent_id: paymentIntentId }),
   });
-  const { payment_intent: capturedPaymentIntent, error: captureError } = await res.json(); 
-  return { capturedPaymentIntent, captureError }; 
+  const { payment_intent: capturedPaymentIntent, error: captureError } = await res.json();
+  return { capturedPaymentIntent, captureError };
 }

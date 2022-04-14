@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  const res = await fetch("/list-readers"); 
+  const res = await fetch("/list-readers");
   const { readers, error: readerError } = await res.json();
   if (readerError) {
-    handleError(readerError); 
+    handleError(readerError);
   }
 
   if (readers.length) {
@@ -10,28 +10,28 @@ document.addEventListener('DOMContentLoaded', async () => {
   } else {
     addMessage(`No Terminal readers returned. Add readers to your Stripe account.`)
   }
-  
-  const readerSelect = document.getElementById('reader-select'); 
+
+  const readerSelect = document.getElementById('reader-select');
   readers.forEach(el => {
     const readerOption = document.createElement('option');
-    readerOption.value = el.id; 
-    readerOption.text = `${el.label} (${el.id})`; 
+    readerOption.value = el.id;
+    readerOption.text = `${el.label} (${el.id})`;
     readerSelect.append(readerOption);
   });
 
   const form = document.getElementById('confirm-form');
   form.addEventListener('submit', async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     form.querySelector('button').disabled = true;
 
-    const amountInput = document.querySelector('#amount').value;
-    
+    const amountInput = parseInt(document.querySelector('#amount').value, 10);
+
     // Create Payment Intent
     const { paymentIntentId, paymentError } = await createPaymentIntent(amountInput);
     if (paymentError) {
       handleError(paymentError);
       form.querySelector('button').disabled = false;
-      return; 
+      return;
     }
     addMessage(`Created PaymentIntent for ${amountInput}.`);
 
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (processError) {
       handleError(processError);
       form.querySelector('button').disabled = false;
-      return; 
+      return;
     }
     window.location.replace(`/reader.html?reader_id=${readerId}&payment_intent_id=${paymentIntentId}&amount=${amountInput}`);
   });
@@ -59,5 +59,5 @@ async function processPayment(readerId, paymentIntentId) {
     }),
   });
   const { error: processError, reader_state: readerState } = await res.json();
-  return { processError, readerState }; 
+  return { processError, readerState };
 }

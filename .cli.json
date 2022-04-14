@@ -1,0 +1,10 @@
+{
+  "name": "terminal",
+  "configureDotEnv": true,
+  "integrations": [
+    {
+      "name": "server-driven",
+      "servers": ["ruby", "python", "php", "node", "java", "go", "dotnet"]
+    }
+  ]
+}
