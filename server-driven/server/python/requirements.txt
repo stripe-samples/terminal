@@ -10,7 +10,7 @@ MarkupSafe==2.1.0
 mccabe==0.6.1
 pycodestyle==2.8.0
 pyflakes==2.4.0
-python-dotenv==0.19.2
+python-dotenv==0.20.0
 requests==2.27.1
 stripe==2.70.0
 urllib3==1.26.8
