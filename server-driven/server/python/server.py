@@ -2,7 +2,7 @@
 """
 server.py
 Stripe Sample.
-Python 3.6 or newer required.
+Python 3.7 or newer required.
 """
 
 import stripe
