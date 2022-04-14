@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const { captureError } = await capturePaymentIntent(paymentIntentId);
     if (captureError) {
       handleError(captureError);
+      addMessage(`See your Stripe dashboard for error details for this payment here: ${paymentIntentId}.`);
       captureButton.disabled = false;
       return;
     }

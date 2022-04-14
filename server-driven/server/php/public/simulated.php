@@ -42,6 +42,7 @@ try {
         <section class="container">
           <h2>Step 2: Complete and capture the payment with simulated payment method</h2>
           <p>Complete the payment. At this stage, the reader has been prompted for payment and ready for a dip, tap, or swipe (in the case of fallback).</p>
+          <p>You can use amounts ending in the certain values to produce specific responses. See <a href="https://stripe.com/docs/terminal/references/testing#physical-test-cards">the documentation</a> for more details.</p>
           <div class="sr-form-row">
             <label>Select Reader: </label>
             <select name="reader" class="sr-select" disabled>
