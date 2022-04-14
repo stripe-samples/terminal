@@ -4,6 +4,7 @@
   "integrations": [
     {
       "name": "server-driven",
+      "clients": ["html"],
       "servers": ["ruby", "python", "php", "node", "java", "go", "dotnet"]
     }
   ]
