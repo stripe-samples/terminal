@@ -115,7 +115,20 @@ def ensure_simulated_readers
   # This checks to see if we have any simulated readers
   # on the CI account, if we do not, then it creates a new one.
   if !Stripe::Terminal::Reader.list(device_type: 'simulated_wisepos_e').any?
-    Stripe::Terminal::Reader.create(registration_code: 'simulated-wpe')
+    location = Stripe::Terminal::Location.create(
+      display_name: 'test',
+      address: {
+        line1: '123 Main',
+        country: 'US',
+        city: 'San Francisco',
+        state: 'CA',
+        postal_code: '94111'
+      }
+    )
+    Stripe::Terminal::Reader.create(
+      registration_code: 'simulated-wpe',
+      location: location
+    )
   end
 end
 

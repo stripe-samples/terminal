@@ -9,7 +9,7 @@ This repository includes examples two types of integrations.
 The recommended way to use this Stripe Sample is with the [Stripe CLI](https://stripe.com/docs/stripe-cli#install):
 
 ```sh
-stripe samples create stripe-terminal-sample
+stripe samples create terminal
 ```
 
 You can also clone the repository, but there is a bit more manual setup work to
