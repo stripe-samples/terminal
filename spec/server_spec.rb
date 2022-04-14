@@ -122,7 +122,8 @@ RSpec.describe "Terminal integration" do
     })
 
     expect(resp).to have_key("reader_state")
-    expect(resp["reader_state"]).to have_key("action")
-    expect(resp["reader_state"]["action"]).to be_nil
+    if resp["reader_state"].has_key?("action")
+      expect(resp["reader_state"]["action"]).to be_nil
+    end
   end
 end
