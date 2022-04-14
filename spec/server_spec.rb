@@ -12,6 +12,9 @@ RSpec.describe "Terminal integration" do
     resp = get_json("/list-readers")
     expect(resp).to have_key("readers")
     expect(resp["readers"].length).to be > 0
+    reader = resp["readers"][0]
+    expect(reader).to have_key("label")
+    expect(reader).to have_key("id")
   end
 
   it 'creates payment intents' do
