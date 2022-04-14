@@ -119,3 +119,51 @@ post '/simulate-payment' do
   end
 end
 
+
+get '/retrieve-reader' do
+  # Retrieves a Reader.
+  begin
+    reader_id = params[:reader_id]
+    reader = Stripe::Terminal::Reader.retrieve(reader_id)
+    { reader_state: reader }.to_json
+  rescue => e
+    { error: { message: e.message }}.to_json
+  end
+end
+
+post '/capture-payment-intent' do
+  content_type 'application/json'
+  data = JSON.parse(request.body.read)
+  # Captures a PaymentIntent that been completed but uncaptured.
+  # This action only requires a PaymentIntent ID but can be configured
+  # with additional parameters.
+  #
+  # [0] https://stripe.com/docs/api/payment_intents/capture
+  begin
+    payment_intent_id = data['payment_intent_id']
+    payment_intent = Stripe::PaymentIntent.capture(payment_intent_id)
+    { payment_intent: payment_intent }.to_json
+  rescue => e
+    { error: { message: e.message }}.to_json
+  end
+end
+
+post '/cancel-reader-action' do
+  content_type 'application/json'
+  data = JSON.parse(request.body.read)
+
+  # Cancels the Reader action and resets the screen to the idle state.
+  # This can also be use to reset the Reader's screen back to the idle state.
+  #
+  # It only returns a failure if the Reader is currently processing a payment
+  # after a customer has dipped/tapped or swiped their card.
+  #
+  # Note: This doesn't cancel in-flight payments.
+  begin
+    reader_id = data['reader_id']
+    reader = Stripe::Terminal::Reader.cancel_action(reader_id)
+    { reader_state: reader }.to_json
+  rescue => e
+    { error: { message: e.message }}.to_json
+  end
+end
