@@ -5,7 +5,6 @@ using Microsoft.Extensions.Options;
 using Stripe;
 using Stripe.Terminal;
 using TestReaderService = Stripe.TestHelpers.Terminal.ReaderService;
-using ReaderPresentPaymentMethodOptions = Stripe.TestHelpers.Terminal.ReaderPresentPaymentMethodOptions;
 
 DotNetEnv.Env.Load();
 
