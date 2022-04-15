@@ -18,7 +18,7 @@ configure the `.env` environment variable file in the server directory.
 You'll find more detailed instructions for each integration type in the
 relevant READMEs:
 
-- [API driven integration](./api-driven/README.md)
+- [Server-driven integration](./server-driven/README.md)
 
 ---
 
@@ -45,5 +45,5 @@ If you have questions, comments, or need help with code, we're here to help:
 Sign up to [stay updated with developer news](https://go.stripe.global/dev-digest).
 
 ## Authors
-
+- [@cjav_dev](https://twitter.com/cjav_dev)
 - [@charlesw](https://twitter.com/charlesw_dev)
