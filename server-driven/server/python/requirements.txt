@@ -12,7 +12,7 @@ pycodestyle==2.8.0
 pyflakes==2.4.0
 python-dotenv==0.20.0
 requests==2.27.1
-stripe==2.76.0
+stripe==3.0.0
 urllib3==1.26.9
 Werkzeug==2.1.1
 yapf==0.32.0
