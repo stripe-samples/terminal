@@ -1,5 +1,12 @@
 # Collect in-person payments with Stripe Terminal's API
 
+## Table of contents
+
+1. [Installation and Configuration](#how-to-run-locally)
+2. [Creating a Location](#creating-a-location)
+3. [Creating a Reader](#creating-a-reader)
+4. [Running the sample](#running-the-sample)
+
 This integration shows you how to accept in-person payments with Stripe
 [Terminal](https://stripe.com/docs/terminal).
 
@@ -73,7 +80,8 @@ The other environment variables are configurable:
 `STATIC_DIR` tells the server where the client files are located and does
 not need to be modified unless you move the server files.
 
-**2. Create a Location**
+## Creating a Location
+
 Locations help you manage readers and their activity by associating them with a physical operating site.
 
 You can create a Location in the Dashboard or with the API. This sample requires at least one Location, because Locations are required to register Readers.
@@ -111,7 +119,8 @@ This will return the JSON: -->
 }
 ```
 
-**3. Create a Reader**
+## Creating a Reader
+
 Stripe Terminal only works with our pre-certified readers. This demo assumes that you're using the [BBPOS WisePOS E](https://stripe.com/docs/terminal/payments/setup-reader/bbpos-wisepad3). Stripe also
 
 You can create a Reader in the [Dashboard](https://stripe.com/docs/terminal/payments/connect-reader?terminal-sdk-platform=js&reader-type=smart#register-in-the-dashboard) or with the [API](https://stripe.com/docs/terminal/payments/connect-reader?terminal-sdk-platform=js&reader-type=smart#register-using-the-api). This sample requires at least one Reader.
@@ -145,7 +154,7 @@ This will return the JSON: -->
 }
 ```
 
-**3. Follow the server instructions on how to run**
+## Running the sample
 
 Pick the server language you want and follow the instructions in the server
 folder README on how to run.
@@ -159,5 +168,4 @@ npm install
 npm start
 ```
 
-If you're running the React or Vue client, then the sample will run in the browser at
-`localhost:3000`, otherwise visit `localhost:4242`.
+The sample will run in the browser at `localhost:4242`.
