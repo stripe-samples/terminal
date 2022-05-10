@@ -14,5 +14,5 @@ python-dotenv==0.20.0
 requests==2.27.1
 stripe==3.0.0
 urllib3==1.26.9
-Werkzeug==2.1.1
+Werkzeug==2.1.2
 yapf==0.32.0
