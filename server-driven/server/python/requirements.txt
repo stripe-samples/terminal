@@ -11,6 +11,6 @@ pyflakes==2.4.0
 python-dotenv==0.20.0
 requests==2.28.1
 stripe==3.5.0
-urllib3==1.26.9
+urllib3==1.26.10
 Werkzeug==2.1.2
 yapf==0.32.0
