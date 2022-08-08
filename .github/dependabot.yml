@@ -9,39 +9,46 @@ updates:
     directory: "/server-driven/server/ruby/"
     schedule:
       interval: "weekly"
+      day: "thursday"
 
   # python dependencies
   - package-ecosystem: "pip"
     directory: "/server-driven/server/python/"
     schedule:
       interval: "weekly"
+      day: "thursday"
 
   # php dependencies
   - package-ecosystem: "composer"
     directory: "/server-driven/server/php/"
     schedule:
       interval: "weekly"
+      day: "thursday"
 
   # node dependencies
   - package-ecosystem: "npm"
     directory: "/server-driven/server/node/"
     schedule:
       interval: "weekly"
+      day: "thursday"
 
   # go dependencies
   - package-ecosystem: "gomod"
     directory: "/server-driven/server/go/"
     schedule:
       interval: "weekly"
+      day: "thursday"
 
   # java dependencies
   - package-ecosystem: "maven"
     directory: "/server-driven/server/java/"
     schedule:
       interval: "weekly"
+      day: "thursday"
 
   # dotnet dependencies
   - package-ecosystem: "nuget"
     directory: "/server-driven/server/dotnet/"
     schedule:
       interval: "weekly"
+      day: "thursday"
