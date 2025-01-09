@@ -1,5 +1,5 @@
 Flask==2.2.2
 python-dotenv==1.0.0
 stripe==4.1.0
-requests==2.31.0
+requests==2.32.3
 Werkzeug==2.2.2
